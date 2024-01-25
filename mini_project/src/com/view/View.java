@@ -5,7 +5,7 @@ import java.util.Scanner;
 import com.controller.MovieController;
 import com.controller.UserController;
 
-public class view {
+public class View {
 	Scanner sc = new Scanner(System.in);
 	UserController userController = new UserController();
 	MovieController movieController = new MovieController();
