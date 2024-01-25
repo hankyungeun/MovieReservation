@@ -6,10 +6,9 @@ import lombok.Setter;
 @Getter
 @Setter
 public class Movie {
-	private String MovieId;
+	private String movieId;
 	private String movieTitle;
-	private String genre;
 	private int runningTime;
-	private int score;
+	private int grade;
 	private String director;
 }

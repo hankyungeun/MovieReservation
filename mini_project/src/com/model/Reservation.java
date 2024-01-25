@@ -8,8 +8,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class Reservation {
-	private String userId;
-	private String name;
-	private String movieTitle;
-	private Date date;
+	private String reservationId;
+	private User user;
+	private Schedule schedule;
 }
