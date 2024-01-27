@@ -6,8 +6,11 @@ import java.util.List;
 import com.model.Movie;
 
 public class MovieController {
-	public List<Movie> movieList(){
-		List<Movie> movie = new ArrayList<>();
-        return movie;
+	public Object movieList(){
+		List<Movie> movies = new ArrayList<>();
+
+
+
+        return movies.isEmpty() ? "Nothing found" : movies;
 	}
 }

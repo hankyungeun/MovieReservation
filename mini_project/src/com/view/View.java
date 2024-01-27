@@ -13,7 +13,7 @@ public class View {
 	public void mainMenu() {
 		System.out.println("1. 로그인");
 		System.out.println("2. 회원가입");
-		System.out.print("입력");
+		System.out.print("입력 : ");
 		int select = sc.nextInt();
 		
 	}

@@ -3,13 +3,13 @@ package com.model;
 import java.sql.Time;
 import java.util.Date;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
-@Getter
-@Setter
+@Data
 public class Schedule {
 	private String scheduleId;
+	private String movieId;
+	private int theaterNum;
 	private Movie movie;
 	private Theater theater;
 	private Date date;

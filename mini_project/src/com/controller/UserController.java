@@ -12,6 +12,7 @@ public class UserController {
 	}
 	
 	public int login(String userId, String passwd) {
+
 		return 0;
 	}
 	public void deleteUser(String userId) {
