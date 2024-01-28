@@ -1,10 +1,8 @@
 package com.model;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
-@Getter
-@Setter
+@Data
 public class Movie {
 	private String movieId;
 	private String movieTitle;
@@ -20,7 +18,13 @@ public class Movie {
 		this.director = director;
 	}
 
+	@Override
 	public String toString(){
-		return "";
+		String formattedMovieId = String.format("%-3s", movieId);
+		String formattedMovieTitle = String.format("%-20s", movieTitle);
+		String formattedDirector = String.format("%-10s", director);
+		return formattedMovieId + "\t" + formattedMovieTitle + "\t" + runningTime + "\t" + grade + "\t" + formattedDirector;
 	}
+
+
 }

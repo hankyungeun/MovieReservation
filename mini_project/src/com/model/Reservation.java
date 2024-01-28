@@ -2,11 +2,9 @@ package com.model;
 
 import java.util.Date;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
-@Getter
-@Setter
+@Data
 public class Reservation {
 	private String reservationId;
 	private User user;

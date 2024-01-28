@@ -1,10 +1,8 @@
 package com.model;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
-@Getter
-@Setter
+@Data
 public class Theater {
 	private int theaterNum;
 	private int seat;
