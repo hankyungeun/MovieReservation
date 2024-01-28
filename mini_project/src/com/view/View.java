@@ -1,10 +1,14 @@
 package com.view;
 
+import java.sql.Array;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 import java.util.TreeMap;
 
 import com.controller.MovieController;
 import com.controller.UserController;
+import com.model.Movie;
 
 public class View {
 	Scanner sc = new Scanner(System.in);
@@ -85,8 +89,18 @@ public class View {
 
 	}
 	public void viewMoiveList(){
-
-		System.out.println(movieController.movieList());
+		Object movieListResult = movieController.movieList();
+		// 가져온 결과가 List<Movie> 형태인지 확인
+		if (movieListResult instanceof List) {
+			List<Movie> movies = (List<Movie>) movieListResult;
+			System.out.println(String.format("%-3s%-20s%-5s%-5s%-10s", "번호", "영화 제목", "상영 시간", "평점", "감독"));
+			for (Movie movie : movies) {
+				System.out.println(movie);
+			}
+		} else {
+			// 결과가 List<Movie> 형태가 아닌 경우에 대한 처리
+			System.out.println(movieListResult);
+		}
 	}
 	public void viewReservationList(){
 	}
