@@ -36,19 +36,15 @@ public class ScheduleController {
         scheduleList.add(schedule2);
         scheduleList.add(schedule3);
 
-        // List의 내용을 출력
-        for (Schedule schedule : scheduleList) {
-            System.out.println("Schedule ID: " + schedule.getScheduleId());
-            System.out.println("Date: " + schedule.getDate());
-            System.out.println("StartTime: " + schedule.getStartTime());
-            System.out.println("EndTime: " + schedule.getEndTime());
-            System.out.println("----------------------");
-        }
-
         List<Schedule> filteredList = new ArrayList<>();
         for (Schedule schedule : scheduleList) {
             if (schedule.getMovieId() == movieId) {
-                filteredList.add(schedule);
+                System.out.println("Schedule ID: " + schedule.getScheduleId());
+                System.out.println("Date: " + schedule.getDate());
+                System.out.println("상영관 : " + schedule.getTheaterNum());
+                System.out.println("StartTime: " + schedule.getStartTime());
+                System.out.println("EndTime: " + schedule.getEndTime());
+                System.out.println("----------------------");
             }
         }
 

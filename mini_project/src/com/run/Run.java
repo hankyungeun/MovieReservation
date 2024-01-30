@@ -12,7 +12,7 @@ public class Run {
 		// view.mainMenu();
 		// view.viewMoiveList();
 		ScheduleController sc = new ScheduleController();
-		System.err.println(sc.scheduleList(1));
+		System.err.println(sc.scheduleList(3));
 	}
 
 }

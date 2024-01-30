@@ -1,12 +1,11 @@
 package com.view;
 
-import java.sql.Array;
-import java.util.ArrayList;
+import java.text.ParseException;
 import java.util.List;
 import java.util.Scanner;
-import java.util.TreeMap;
 
 import com.controller.MovieController;
+import com.controller.ScheduleController;
 import com.controller.UserController;
 import com.model.Movie;
 
@@ -14,6 +13,7 @@ public class View {
 	Scanner sc = new Scanner(System.in);
 	UserController userController = new UserController();
 	MovieController movieController = new MovieController();
+	ScheduleController scheduleController = new ScheduleController();
 
 	public void mainMenu() {
 		while (true) {
@@ -104,10 +104,22 @@ public class View {
 			}
 			System.out.print("예매할 영화 번호 입력 : ");
 			int movieId = sc.nextInt();
+			viewScheduleList(movieId);
 
 		} else {
 			// 결과가 List<Movie> 형태가 아닌 경우에 대한 처리
 			System.out.println(movieListResult);
+		}
+	}
+
+	public void viewScheduleList(int movieId) {
+		try {
+			scheduleController.scheduleList(movieId);
+			System.out.print("스케줄 번호 입력 : ");
+			int scheduleId = sc.nextInt();
+
+		} catch (ParseException e) {
+			e.printStackTrace();
 		}
 	}
 

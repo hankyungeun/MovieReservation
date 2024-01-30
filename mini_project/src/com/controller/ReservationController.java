@@ -8,5 +8,6 @@ import com.model.Reservation;
 public class ReservationController {
 	public void reservationList() {
 		List<Reservation> reservationList = new ArrayList<>();
+
 	}
 }
