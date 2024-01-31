@@ -31,4 +31,8 @@ public class Schedule {
 		this.movie = movie;
 		this.theater = theater;
 	}
+
+	public Theater getAssociatedTheater() {
+		return theater;
+	}
 }

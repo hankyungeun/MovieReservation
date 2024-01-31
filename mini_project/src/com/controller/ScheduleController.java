@@ -29,12 +29,24 @@ public class ScheduleController {
         Time endTime3 = new Time(timeFormat.parse("22:00:00").getTime());
 
         Schedule schedule1 = new Schedule("1", 1, 1, date1, startTime1, endTime1);
-        Schedule schedule2 = new Schedule("2", 2, 2, date2, startTime2, endTime2);
-        Schedule schedule3 = new Schedule("3", 3, 3, date3, startTime3, endTime3);
+        Schedule schedule2 = new Schedule("2", 1, 1, date2, startTime2, endTime2);
+        Schedule schedule3 = new Schedule("3", 1, 1, date3, startTime3, endTime3);
+        Schedule schedule4 = new Schedule("4", 2, 2, date1, startTime1, endTime1);
+        Schedule schedule5 = new Schedule("5", 2, 2, date2, startTime2, endTime2);
+        Schedule schedule6 = new Schedule("6", 2, 2, date3, startTime3, endTime3);
+        Schedule schedule7 = new Schedule("7", 3, 3, date1, startTime1, endTime1);
+        Schedule schedule8 = new Schedule("8", 3, 3, date2, startTime2, endTime2);
+        Schedule schedule9 = new Schedule("9", 3, 3, date3, startTime3, endTime3);
 
         scheduleList.add(schedule1);
         scheduleList.add(schedule2);
         scheduleList.add(schedule3);
+        scheduleList.add(schedule4);
+        scheduleList.add(schedule5);
+        scheduleList.add(schedule6);
+        scheduleList.add(schedule7);
+        scheduleList.add(schedule8);
+        scheduleList.add(schedule9);
 
         List<Schedule> filteredList = new ArrayList<>();
         for (Schedule schedule : scheduleList) {
