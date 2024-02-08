@@ -30,7 +30,6 @@ public class View {
 					break;
 			}
 		}
-
 	}
 
 	// 회원가입
@@ -71,7 +70,6 @@ public class View {
 				System.out.println("비밀번호가 일치하지 않습니다.");
 			}
 		}
-
 	}
 
 	public void userMenu() {
@@ -83,7 +81,6 @@ public class View {
 			switch (menu) {
 				case 1:
 					viewMoiveList();
-
 					break;
 				case 2:
 					viewReservationList();
