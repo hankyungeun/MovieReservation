@@ -25,13 +25,6 @@ public class UserService {
 
         return result;
     }
-    public ArrayList<User> selectAllList() {
-        Connection conn = JDBCTemplate.getConnection();
-        ArrayList<User> list = new UserDao().selectAllList(conn);
-        JDBCTemplate.close(conn);
-
-        return list;
-    }
 
     public User login(String userId, String pw) {
         Connection conn = JDBCTemplate.getConnection();

@@ -12,6 +12,7 @@ import java.util.List;
 public class UserController {
 	private List<User> userList = new ArrayList<>();
 
+	// 회원가입
 	public void createUser(String userId, String passwd, String Name) {
 
 		User user = new User(userId, passwd, Name);
@@ -27,32 +28,17 @@ public class UserController {
 	}
 
 
-	//1 : 로그인 성공, 2 : 아이디 없음, 3 : 비밀번호 다름
+	// 로그인
 	public boolean login(String userId, String passwd) {
 
 		User user = new UserService().login(userId, passwd);
 
 		if (user == null) {
-			new View().displayNoData(null);
+			new View().displayNoData("로그인 정보가 없습니다");
 			return false;
 		} else {
 			new View().displayUser(user);
 			return true;
-		}
-	}
-
-
-	public void selectAllList() {
-		// list객체에 회원 전체 목록을 담기
-		ArrayList<User> list = new UserService().selectAllList();
-
-		// view쪽에 결과 전달하여 출력
-		// list.size() > 0 : 목록을 출력
-		// list.size() == 0 : 데이터가 없습니다.
-		if (list.isEmpty()) {
-			new View().displayNoData(null);
-		} else {
-			new View().displayList(list);
 		}
 	}
 
