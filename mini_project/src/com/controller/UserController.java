@@ -16,7 +16,7 @@ public class UserController {
 
 		User user = new User(userId, passwd, Name);
 
-		int result = new UserService().insertMember(user);
+		int result = new UserService().insertUser(user);
 
 		if (result > 0) { // 회원 추가 성공
 			new View().displaySuccess("회원추가 성공");
@@ -28,17 +28,17 @@ public class UserController {
 
 
 	//1 : 로그인 성공, 2 : 아이디 없음, 3 : 비밀번호 다름
-	public int login(String userId, String passwd) {
-		for(User user:userList){
-			if(user.getUserId().equals(userId) && user.getPasswd().equals(passwd)){
-				return 1;
-			}
-			else if(user.getUserId().equals(userId)){
-				return 3;
-			}
-			else return 2;
+	public boolean login(String userId, String passwd) {
+
+		User user = new UserService().login(userId, passwd);
+
+		if (user == null) {
+			new View().displayNoData(null);
+			return false;
+		} else {
+			new View().displayUser(user);
+			return true;
 		}
-		return 2;
 	}
 
 

@@ -9,10 +9,12 @@ import java.util.ArrayList;
 
 
 public class UserService {
-    public int insertMember(User user) {
-        Connection conn = JDBCTemplate.getConnection();
 
-        int result = new UserDao().insertMember(conn, user);
+    public User user;
+
+    public int insertUser(User user) {
+        Connection conn = JDBCTemplate.getConnection();
+        int result = new UserDao().insertUser(conn, user);
 
         if(result > 0) {			// 회원 추가 성공
             JDBCTemplate.commit(conn);
@@ -29,5 +31,13 @@ public class UserService {
         JDBCTemplate.close(conn);
 
         return list;
+    }
+
+    public User login(String userId, String pw) {
+        Connection conn = JDBCTemplate.getConnection();
+        User user = new UserDao().login(conn, userId, pw);
+        JDBCTemplate.close(conn);
+        this.user = user;
+        return user;
     }
 }

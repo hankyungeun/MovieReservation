@@ -37,12 +37,12 @@ public class UserDao {
 		 * @param conn, m : Connection 객체와 사용자가 입력한 데이터(Member)
 		 * @return result : 처리된 행 수 (회원 추가 결과)
 		 */
-		public int insertMember(Connection conn, User user) {
+		public int insertUser(Connection conn, User user) {
 			// PreparedStatement 객체 생성
 			PreparedStatement pstmt = null;
 			
 			int result = 0;
-			String sql = prop.getProperty("InsertUser");
+			String sql = prop.getProperty("insertUser");
 			try {
 				pstmt = conn.prepareStatement(sql);
 				pstmt.setString(1, user.getUserId());
@@ -107,6 +107,34 @@ public class UserDao {
 			} catch (SQLException e) {
 				e.printStackTrace();
 			} finally {
+				JDBCTemplate.close(pstmt);
+			}
+			return result;
+		}
+
+		public User login(Connection conn, String userId, String passwd) {
+			User result = null;
+			PreparedStatement pstmt = null;
+			ResultSet rset = null;
+
+			String sql = prop.getProperty("login");
+
+			try {
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, userId);
+				pstmt.setString(2, passwd);
+				rset = pstmt.executeQuery();
+				if (rset.next()) {
+					User user = new User();
+					user.setUserId(rset.getString("USER_ID"));
+					user.setPasswd(rset.getString("PASSWD"));
+					user.setName(rset.getString("NAME"));
+					result = user;
+				}
+			} catch(SQLException e) {
+				e.printStackTrace();
+			} finally {
+				JDBCTemplate.close(rset);
 				JDBCTemplate.close(pstmt);
 			}
 			return result;
