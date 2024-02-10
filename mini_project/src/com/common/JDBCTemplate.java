@@ -16,12 +16,14 @@ public class JDBCTemplate {
 		Properties prop = new Properties();
 		
 		Connection conn = null;		// DB연결
+
 		try {
-			prop.load(new FileInputStream("resources/driver.properties"));
+			prop.load(new FileInputStream("/Users/hangyeong-eun/Documents/dev/MovieReservation/mini_project/resources/driver.properties"));
 			
 			Class.forName(prop.getProperty("driver"));
 			
 			conn = DriverManager.getConnection(prop.getProperty("url"),prop.getProperty("username"),prop.getProperty("passwd"));
+			conn.setAutoCommit(false);
 
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();

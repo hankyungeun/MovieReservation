@@ -8,5 +8,8 @@
 <entry key="deleteMember">DELETE FROM MEMBER WHERE USERID = ?</entry>
 <entry key="insertMember">INSERT INTO MEMBER VALUES(SEQ_UNO.NEXTVAL,?,?,?,?,?,?,?,?,?,SYSDATE)</entry>
 <entry key="searchByUserNameKeyword">SELECT * FROM MEMBER WHERE USERNAME LIKE ?</entry>
-<entry key="selectAllList">SELECT * FROM MEMBER</entry>
+
+
+<entry key="InsertUser">INSERT INTO "user" (USER_ID, PASSWD, NAME) VALUES (?, ?, ?)</entry>
+<entry key="selectAllList">SELECT * FROM "user"</entry>
 </properties>

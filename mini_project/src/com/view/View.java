@@ -1,6 +1,7 @@
 package com.view;
 
 import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -8,6 +9,7 @@ import com.controller.MovieController;
 import com.controller.ScheduleController;
 import com.controller.UserController;
 import com.model.Movie;
+import com.model.User;
 
 public class View {
 	Scanner sc = new Scanner(System.in);
@@ -40,7 +42,7 @@ public class View {
 		String name = sc.next();
 		System.out.print("이름을 입력하세요 : ");
 		String passwd = sc.next();
-		userController.creatUser(userId, passwd, name);
+		userController.createUser(userId, passwd, name);
 	}
 
 	// 로그인
@@ -90,6 +92,18 @@ public class View {
 
 	}
 
+	public void displayNoData(String message) {
+		System.out.println("\n 결과 없음 : message");
+	}
+
+
+	public void displayList(ArrayList<User> list) {
+		System.out.println("\n 조회된 결과는 다음과 같습니다.");
+		for(User user : list) {
+			System.out.println(user);
+		}
+	}
+
 	public void viewMoiveList() {
 		Object movieListResult = movieController.movieList();
 		// 가져온 결과가 List<Movie> 형태인지 확인
@@ -107,6 +121,18 @@ public class View {
 			// 결과가 List<Movie> 형태가 아닌 경우에 대한 처리
 			System.out.println(movieListResult);
 		}
+	}
+
+	public void displaySuccess(String message) {
+		System.out.println("\n 요청 성공 : " + message);
+	}
+
+	/**
+	 * 요청 처리 후 실패했을 경우 사용자가 보게될 화면
+	 * @param message : 객체 별 실패 메시지
+	 */
+	public void displayFailed(String message) {
+		System.out.println("\n 요청 실패 : " + message);
 	}
 
 	public void viewScheduleList(int movieId) {
