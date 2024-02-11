@@ -1,9 +1,11 @@
 package com.view;
 
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.Scanner;
 
 import com.controller.MovieController;
@@ -11,10 +13,13 @@ import com.controller.ReservationController;
 import com.controller.ScheduleController;
 import com.controller.UserController;
 import com.model.Movie;
+import com.model.Reservation;
 import com.model.Schedule;
 import com.model.User;
+import com.service.UserService;
 
 public class View {
+	private String loginedUser;
 	Scanner sc = new Scanner(System.in);
 	UserController userController = new UserController();
 	MovieController movieController = new MovieController();
@@ -57,7 +62,10 @@ public class View {
 			System.out.print("비밀번호 : ");
 			String passwd = sc.next();
 			if(userController.login(userId, passwd)){
+				loginedUser = userId;
 				userMenu();
+
+
 			} else {
 				System.out.println("\n1 : 로그인 계속 진행");
 				System.out.println("2 : 뒤로가기");
@@ -91,7 +99,11 @@ public class View {
 					reservationMovie();
 					break;
 				case 2:
-					viewReservationList();
+					Optional.ofNullable(loginedUser).ifPresentOrElse(
+							lu -> {
+								reservationController.findReservation(lu);
+							}, () -> System.out.println("UNKNOWN_USER")
+					);
 					break;
 			}
 		}
@@ -109,17 +121,23 @@ public class View {
 		System.out.print("예매할 영화 번호 입력 : ");
 		int movieNum = sc.nextInt();
 		scheduleController.findSchedule(movieNum);
+		System.out.println("스케줄 번호 입력 : ");
+		int scNum = sc.nextInt();
 		System.out.println("좌석 번호 입력 : ");
-		//reservationController.
+		int seatNum = sc.nextInt();
+		reservationController.reserveMovie(scNum, seatNum, loginedUser);
 	}
 
 	public void displaySchedules(List<Schedule> list) {
+		SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
 		System.out.println("\n조회된 스케줄 결과는 다음과 같습니다.");
 		for(Schedule schedule : list) {
 			System.out.println("Schedule ID: " + schedule.getScheduleId());
             System.out.println("상영관 : " + schedule.getTheaterNum());
-            System.out.println("StartTime: " + schedule.getStartTime());
-            System.out.println("EndTime: " + schedule.getEndTime());
+			System.out.println("날짜 : " + schedule.getStartTime());
+            System.out.println("시작 시간 : " + sdf.format(schedule.getStartTime()));
+            System.out.println("종료 시간 : " + sdf.format(schedule.getEndTime()));
+			System.out.println("Max Seat : " + schedule.getTheater().getSeat());
             System.out.println("----------------------");
 		}
 	}
@@ -135,8 +153,10 @@ public class View {
 		System.out.println("\n결과 없음 : " + message);
 	}
 
-
-	public void viewReservationList() {
-
+	public void displayReservation(List<Reservation> list) {
+		System.out.println("\n조회된 예매 내역은 다음과 같습니다.");
+		for(Reservation reservation : list) {
+			System.out.println(reservation);
+		}
 	}
 }

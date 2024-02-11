@@ -1,16 +1,11 @@
 package com.model;
 
-import java.sql.Time;
 import java.util.Date;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
 
-import javax.persistence.ManyToOne;
-import javax.persistence.Transient;
 
 @Data
 @RequiredArgsConstructor

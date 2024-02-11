@@ -10,8 +10,6 @@ import java.util.ArrayList;
 
 public class UserService {
 
-    public User user;
-
     public int insertUser(User user) {
         Connection conn = JDBCTemplate.getConnection();
         int result = new UserDao().insertUser(conn, user);
@@ -30,7 +28,6 @@ public class UserService {
         Connection conn = JDBCTemplate.getConnection();
         User user = new UserDao().login(conn, userId, pw);
         JDBCTemplate.close(conn);
-        this.user = user;
         return user;
     }
 }
