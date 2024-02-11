@@ -2,11 +2,10 @@
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
 <comment>Member Query</comment>
-<entry key="findAllMovie">SELECT * FROM MOVIE</entry>
 
-<entry key="searchByUserId">SELECT * FROM MEMBER WHERE USERID = ?</entry>
-<entry key="deleteMember">DELETE FROM MEMBER WHERE USERID = ?</entry>
-<entry key="searchByUserNameKeyword">SELECT * FROM MEMBER WHERE USERNAME LIKE ?</entry>
+    <entry key="findReservationByUserId">SELECT * FROM "RESERVATION" WHERE USER_ID = ?</entry>
+    <entry key="findByScheduleNumAndSeatNum">SELECT * FROM "RESERVATION" WHERE SCHEDULE_ID = ? AND SEAT = ?</entry>
+    <entry key="insertReservation">INSERT INTO "RESERVATION" (RESERVATION_ID, SCHEDULE_ID, USER_ID, SEAT) VALUES (?, ?, ?, ?)</entry>
 
     <entry key="Movies">SELECT * FROM "MOVIE"</entry>
     <entry key="Schedules">SELECT * FROM "SCHEDULE" JOIN "THEATER" USING THEATER_NUM</entry>
@@ -14,7 +13,7 @@
     <entry key="findScheduleByMovieNum">SELECT * FROM "SCHEDULE" WHERE MOVIE_ID = ?</entry>
     <entry key="findTheaterByNum">SELECT * FROM "THEATER" WHERE THEATER_NUM = ?</entry>
 
+<!--    사용자 관련 쿼리-->
     <entry key="login">SELECT * FROM "USER" WHERE USER_ID = ? and PASSWD = ?</entry>
     <entry key="insertUser">INSERT INTO "USER" (USER_ID, PASSWD, NAME) VALUES (?, ?, ?)</entry>
-    <entry key="selectAllList">SELECT * FROM "USER"</entry>
 </properties>
