@@ -23,11 +23,8 @@ public class Reservation {
 	}
 
 	public Reservation(String reservationId, String userId, int scheduleId, int seat, int theaterNum, Date startTime, Date endTime) {
-		this.reservationId = reservationId;
-		this.userId = userId;
-		this.scheduleId = scheduleId;
-		this.seat = seat;
-		this.schedule = new Schedule(); // Assuming you have a Schedule object in Reservation
+		this(reservationId,userId,scheduleId,seat);
+		this.schedule = new Schedule();
 		this.schedule.setTheaterNum(theaterNum);
 		this.schedule.setStartTime(startTime);
 		this.schedule.setEndTime(endTime);

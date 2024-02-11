@@ -1,8 +1,6 @@
 package com.view;
 
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -115,22 +113,40 @@ public class View {
 	}
 	public void displayMovies(ArrayList<Movie> list) {
 		System.out.println("\n조회된 결과는 다음과 같습니다.");
-		System.out.println(String.format("%-5s%-25s%-8s%-7s%-10s", "번호", "영화 제목", "상영 시간", "평점", "감독"));
+//		System.out.println(String.format("%-5s%-25s%-8s%-7s%-10s", "번호", "영화 제목", "상영 시간", "평점", "감독"));
 		for(Movie movie : list) {
-			System.out.println(movie);
+			System.out.println("번호 : " + movie.getMovieId());
+			System.out.println("영화제목 : " + movie.getMovieTitle());
+			System.out.println("상영 시간 : " + movie.getRunningTime());
+			System.out.println("평점 : " + movie.getGrade());
+			System.out.println("감독 : " + movie.getDirector());
+			System.out.println("----------------------");
 		}
 	}
 
 	// 영화 예매 함수
 	public void reservationMovie(){
-		System.out.print("예매할 영화 번호 입력 : ");
-		int movieNum = sc.nextInt();
-		scheduleController.findSchedule(movieNum);
-		System.out.println("스케줄 번호 입력 : ");
-		int scNum = sc.nextInt();
-		System.out.println("좌석 번호 입력 : ");
-		int seatNum = sc.nextInt();
-		reservationController.reserveMovie(scNum, seatNum, loginedUser);
+		while (true){
+			System.out.print("\n예매할 영화 번호 입력 : ");
+			int movieNum = sc.nextInt();
+			if(!scheduleController.findSchedule(movieNum)) break;
+			System.out.print("스케줄 번호 입력 : ");
+			int scNum = sc.nextInt();
+			System.out.print("좌석 번호 입력 : ");
+			int seatNum = sc.nextInt();
+			if(seatNum < 0){
+				System.out.println("유효한 숫자 입력");
+			} else{
+				if(scheduleController.findSeat(scNum, seatNum)) {
+					reservationController.reserveMovie(scNum, seatNum, loginedUser);
+					return;
+				}
+				else{
+					System.out.println("좌석 번호는 Max Seat를 초과할 수 없습니다.");
+					break;
+				}
+			}
+		}
 	}
 
 	public void displaySchedules(List<Schedule> list) {

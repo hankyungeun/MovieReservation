@@ -3,7 +3,6 @@ package com.service;
 import com.common.JDBCTemplate;
 import com.dao.ScheduleDao;
 import com.dao.TheaterDao;
-import com.model.Movie;
 import com.model.Schedule;
 import com.model.Theater;
 
@@ -24,5 +23,13 @@ public class ScheduleService {
         JDBCTemplate.close(conn);
 
         return list;
+    }
+
+    public Schedule findSeat (int scheduleId, int seat){
+        Connection conn = JDBCTemplate.getConnection();
+        Schedule schedule = new ScheduleDao().findSeat(conn, scheduleId);
+
+        JDBCTemplate.close(conn);
+        return schedule;
     }
 }

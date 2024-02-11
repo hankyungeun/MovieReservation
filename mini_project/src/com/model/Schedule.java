@@ -29,12 +29,10 @@ public class Schedule {
 		this.endTime = endTime;
 	}
 
-	public Schedule(int scheduleId, int movieId, int theaterNum, Theater theater, Date startTime, Date endTime) {
+	public Schedule(int scheduleId, int movieId, int theaterNum, Date startTime, Date endTime, int seat) {
 		this(scheduleId, movieId, theaterNum, startTime, endTime);
-		this.theater = theater;
+		this.theater = new Theater();
+		this.theater.setSeat(seat);
 	}
 
-	public Theater getAssociatedTheater() {
-		return theater;
-	}
 }

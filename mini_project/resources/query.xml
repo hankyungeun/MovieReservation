@@ -3,24 +3,35 @@
 <properties>
 <comment>Member Query</comment>
 
-
+<!--    예매 관련 쿼리-->
+<!--    예매하기-->
+    <entry key="findSeat">
+        SELECT * FROM SCHEDULE
+        JOIN THEATER ON SCHEDULE.THEATER_NUM = THEATER.THEATER_NUM
+        WHERE SCHEDULE_ID = ?
+    </entry>
+    <entry key="findTheaterByNum">SELECT * FROM "THEATER" WHERE THEATER_NUM = ?</entry>
+    <entry key="findByScheduleNumAndSeatNum">SELECT * FROM "RESERVATION" WHERE SCHEDULE_ID = ? AND SEAT = ?</entry>
+    <entry key="insertReservation">INSERT INTO "RESERVATION" (RESERVATION_ID, SCHEDULE_ID, USER_ID, SEAT) VALUES (?, ?, ?, ?)</entry>
+<!--    예매하기-->
+<!--    예매조회-->
     <entry key="findReservationByUserId">
         SELECT * FROM "RESERVATION", "SCHEDULE"
         WHERE
             RESERVATION.SCHEDULE_ID = SCHEDULE.SCHEDULE_ID AND
             USER_ID = ?
     </entry>
+<!--    예매조회-->
+<!--    예매 관련 쿼리-->
 
-<!--    <entry key="findReservationByUserId">SELECT * FROM "RESERVATION" WHERE USER_ID = ?</entry>-->
-    <entry key="findByScheduleNumAndSeatNum">SELECT * FROM "RESERVATION" WHERE SCHEDULE_ID = ? AND SEAT = ?</entry>
-    <entry key="insertReservation">INSERT INTO "RESERVATION" (RESERVATION_ID, SCHEDULE_ID, USER_ID, SEAT) VALUES (?, ?, ?, ?)</entry>
 
     <entry key="Movies">SELECT * FROM "MOVIE"</entry>
-<!--    <entry key="findScheduleByMovieNum">SELECT * FROM "SCHEDULE" JOIN "THEATER" USING THEATER_NUM WHERE MOVIE_ID = ?</entry>-->
     <entry key="findScheduleByMovieNum">SELECT * FROM "SCHEDULE" WHERE MOVIE_ID = ?</entry>
-    <entry key="findTheaterByNum">SELECT * FROM "THEATER" WHERE THEATER_NUM = ?</entry>
+
+
 
 <!--    사용자 관련 쿼리-->
     <entry key="login">SELECT * FROM "USER" WHERE USER_ID = ? and PASSWD = ?</entry>
     <entry key="insertUser">INSERT INTO "USER" (USER_ID, PASSWD, NAME) VALUES (?, ?, ?)</entry>
+<!--    사용자 관련 쿼리-->
 </properties>
