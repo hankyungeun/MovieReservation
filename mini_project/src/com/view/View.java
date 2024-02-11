@@ -30,6 +30,7 @@ public class View {
 		while (true) {
 			System.out.println("1. 로그인");
 			System.out.println("2. 회원가입");
+			System.out.println("0. 프로그램 종료");
 			System.out.print("입력 : ");
 			int select = sc.nextInt();
 			switch (select) {
@@ -39,6 +40,8 @@ public class View {
 				case 2:
 					registerView();
 					break;
+				case 0:
+					return;
 			}
 		}
 	}
@@ -57,7 +60,7 @@ public class View {
 	// 로그인
 	public void loginView() {
 		while (true) {
-			System.out.print("아이디 : ");
+			System.out.print("\n아이디 : ");
 			String userId = sc.next();
 			System.out.print("비밀번호 : ");
 			String passwd = sc.next();
@@ -89,6 +92,7 @@ public class View {
 			System.out.println();
 			System.out.println("1. 영화 예매하기");
 			System.out.println("2. 예매 내역 확인");
+			System.out.println("3. 로그아웃");
 			System.out.print("메뉴 입력 : ");
 			int menu = sc.nextInt();
 			switch (menu) {
@@ -105,6 +109,7 @@ public class View {
 							}, () -> System.out.println("UNKNOWN_USER")
 					);
 					break;
+				case 3: return;
 			}
 		}
 	}
@@ -142,6 +147,20 @@ public class View {
 		}
 	}
 
+	public void displayReservation(List<Reservation> list) {
+		SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
+		System.out.println("\n조회된 예매 내역은 다음과 같습니다.");
+		for(Reservation reservation : list) {
+			System.out.println("예약 번호: " + reservation.getReservationId());
+			System.out.println("상영관 : " + reservation.getSchedule().getTheaterNum());
+			System.out.println("날짜 : " + reservation.getSchedule().getStartTime());
+			System.out.println("시작 시간 : " + sdf.format(reservation.getSchedule().getStartTime()));
+			System.out.println("종료 시간 : " + sdf.format(reservation.getSchedule().getEndTime()));
+			System.out.println("좌석 번호 : " + reservation.getSeat());
+			System.out.println("----------------------");
+		}
+	}
+
 	public void displaySuccess(String message) {
 		System.out.println("\n요청 성공 : " + message);
 	}
@@ -151,12 +170,5 @@ public class View {
 	}
 	public void displayNoData(String message) {
 		System.out.println("\n결과 없음 : " + message);
-	}
-
-	public void displayReservation(List<Reservation> list) {
-		System.out.println("\n조회된 예매 내역은 다음과 같습니다.");
-		for(Reservation reservation : list) {
-			System.out.println(reservation);
-		}
 	}
 }

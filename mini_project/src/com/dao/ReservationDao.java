@@ -30,6 +30,7 @@ public class ReservationDao {
         }
     }
 
+    // 예매 내역 확인
     public ArrayList<Reservation> findReservation(Connection conn, String userId){
         ArrayList<Reservation> list = new ArrayList<>();
 
@@ -47,7 +48,10 @@ public class ReservationDao {
                         rset.getString("RESERVATION_ID"),
                         rset.getString("USER_ID"),
                         rset.getInt("SCHEDULE_ID"),
-                        rset.getInt("SEAT")
+                        rset.getInt("SEAT"),
+                        rset.getInt("THEATER_NUM"),
+                        rset.getDate("START_TIME"),
+                        rset.getDate("END_TIME")
                 );
                 list.add(reservation);
 
@@ -75,7 +79,7 @@ public class ReservationDao {
             pstmt.setInt(2, seat);
             rset = pstmt.executeQuery();
 
-            if(rset.next()) {			// .next():데이터가 있는지 여부 체크
+            if(rset.next()) {
                 Reservation reservation = new Reservation(
                         rset.getString("RESERVATION_ID"),
                         rset.getString("USER_ID"),

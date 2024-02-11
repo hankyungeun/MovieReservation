@@ -23,7 +23,7 @@ public class ReservationController {
 	public void reserveMovie(int scheduleNum, int seatNum, String userId) {
 		Map<Integer, Reservation> r = new ReservationService().reserveMovie(userId, scheduleNum, seatNum);
 		if (r.containsKey(0)) {
-			System.out.println("이미 예매된 번호입니다.");
+			new View().displayFailed("이미 예매된 번호입니다.");
 		} else {
 			new View().displaySuccess("예매 성공");
 		}
