@@ -11,14 +11,6 @@ import java.sql.Connection;
 import java.util.ArrayList;
 
 public class ScheduleService {
-    public ArrayList<Schedule> schedules() {
-        Connection conn = JDBCTemplate.getConnection();
-        ArrayList<Schedule> list = new ScheduleDao().schedules(conn);
-        JDBCTemplate.close(conn);
-
-        return list;
-    }
-
     public ArrayList<Schedule> findSchedules(int movieId) {
         Connection conn = JDBCTemplate.getConnection();
         ArrayList<Schedule> list = new ScheduleDao().findSchedules(conn, movieId);

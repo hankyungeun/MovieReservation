@@ -11,9 +11,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.InvalidPropertiesFormatException;
-import java.util.List;
 import java.util.Properties;
 
 public class TheaterDao {
@@ -41,13 +39,12 @@ public class TheaterDao {
         ResultSet rset = null;
 
         String sql = prop.getProperty("findTheaterByNum");
-        System.out.println(sql);
         try {
             pstmt = conn.prepareStatement(sql);
             pstmt.setInt(1, num);
             rset = pstmt.executeQuery();
 
-            if (rset.next()) {			// .next():데이터가 있는지 여부 체크
+            if (rset.next()) {
                 Theater t = new Theater(
                         rset.getInt("THEATER_NUM"),
                         rset.getInt("SEAT")
