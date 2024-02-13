@@ -6,7 +6,6 @@ import lombok.RequiredArgsConstructor;
 
 import javax.persistence.Table;
 
-@Table(name = "USER")
 @Data
 @RequiredArgsConstructor
 @AllArgsConstructor

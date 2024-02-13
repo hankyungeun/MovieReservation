@@ -16,7 +16,6 @@ public class Schedule {
 
 	private Theater theater;
 
-	@CreationTimestamp
 	private Date startTime;
 
 	private Date endTime;
