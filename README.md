@@ -9,3 +9,4 @@
 - 일정number 및 좌석을 입력받아 영화 예약
 
 ### ERD
+<img width="835" alt="image" src="https://github.com/hankyungeun/MovieReservation/assets/57738749/3e5c19d6-ceb6-4a04-9e00-bfbd54acdf44">
