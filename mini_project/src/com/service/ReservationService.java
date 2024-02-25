@@ -2,11 +2,7 @@ package com.service;
 
 import com.common.JDBCTemplate;
 import com.dao.ReservationDao;
-import com.dao.ScheduleDao;
-import com.dao.TheaterDao;
 import com.model.Reservation;
-import com.model.Schedule;
-import com.model.Theater;
 
 import java.sql.Connection;
 import java.util.ArrayList;

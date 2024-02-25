@@ -2,7 +2,6 @@ package com.dao;
 
 import com.common.JDBCTemplate;
 import com.model.Reservation;
-import com.model.Schedule;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;

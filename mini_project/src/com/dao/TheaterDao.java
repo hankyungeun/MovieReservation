@@ -1,7 +1,6 @@
 package com.dao;
 
 import com.common.JDBCTemplate;
-import com.model.Schedule;
 import com.model.Theater;
 
 import java.io.FileInputStream;

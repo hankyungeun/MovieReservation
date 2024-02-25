@@ -2,7 +2,6 @@ package com.dao;
 
 import com.model.Movie;
 import com.common.JDBCTemplate;
-import com.model.Movie;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;

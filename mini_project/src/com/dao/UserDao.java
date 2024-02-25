@@ -4,14 +4,12 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.sql.*;
-import java.util.ArrayList;
 import java.util.InvalidPropertiesFormatException;
 import java.util.Properties;
 
 import com.common.JDBCTemplate;
 import com.model.User;
 
-import javax.xml.bind.SchemaOutputResolver;
 
 
 public class UserDao {

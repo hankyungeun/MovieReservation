@@ -5,7 +5,6 @@ import com.dao.UserDao;
 import com.model.User;
 
 import java.sql.Connection;
-import java.util.ArrayList;
 
 
 public class UserService {
